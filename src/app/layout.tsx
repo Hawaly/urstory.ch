@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AgencyFlow Pro",
-  description: "La solution complète pour gérer votre agence digitale",
+  title: "YourStory — Agence de storytelling vidéo",
+  description:
+    "YourStory crée des vidéos verticales impactantes et un storytelling authentique pour faire grandir votre marque, simplement et avec professionnalisme.",
 };
 
 export default function RootLayout({

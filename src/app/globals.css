@@ -1,13 +1,143 @@
 @import "tailwindcss";
 
+/* Définition des animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-20px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shine {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes bounce-sm {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Animation classes */
+.animate-pulse-custom {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-float-custom {
+  animation: float 15s ease-in-out infinite;
+}
+
+.animate-shine-custom {
+  animation: shine 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 4s ease-in-out infinite;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-strong {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Gradient utilities */
+.bg-gradient-radial {
+  background-image: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 :root {
+  /* Base colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --accent: #FD5904;
+  
+  /* Orange tints & shades */
+  --orange-50: #FFF7F2;
+  --orange-100: #FFEDE0;
+  --orange-200: #FFD4B8;
+  --orange-300: #FFB88F;
+  --orange-400: #FF8C47;
+  --orange-500: #FD5904;
+  --orange-600: #E04F03;
+  --orange-700: #B83F03;
+  --orange-800: #8F3102;
+  --orange-900: #662301;
+  
+  /* Alpha variants for glassmorphism */
+  --orange-alpha-5: rgba(253, 89, 4, 0.05);
+  --orange-alpha-8: rgba(253, 89, 4, 0.08);
+  --orange-alpha-10: rgba(253, 89, 4, 0.10);
+  --orange-alpha-15: rgba(253, 89, 4, 0.15);
+  --orange-alpha-20: rgba(253, 89, 4, 0.20);
+  --orange-alpha-30: rgba(253, 89, 4, 0.30);
+  
+  /* Glassmorphism tokens */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-strong: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --glass-shadow-hover: 0 12px 48px rgba(253, 89, 4, 0.15);
+  
+  /* Elevation shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.10);
+  --shadow-2xl: 0 24px 64px rgba(0, 0, 0, 0.12);
+  
+  /* Border radius tokens */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-full: 9999px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -16,11 +146,60 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --glass-bg: rgba(10, 10, 10, 0.7);
+    --glass-bg-strong: rgba(10, 10, 10, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.1);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Lama Sans", var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography weights */
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+/* === Styles pour Server Components (déplacés depuis <style jsx>) === */
+
+/* Animation glow pour les orbes de fond */
+.animate-glow {
+  animation: glow 12s ease-in-out infinite;
+}
+
+/* Support des <details>/<summary> natifs */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+/* Surligner la carte du format sélectionné (radios + :has) */
+.formats:has(#format-iphone:checked) [data-format="iphone"],
+.formats:has(#format-camera:checked) [data-format="camera"] {
+  border-color: var(--orange-500);
+  box-shadow: 0 24px 64px rgba(253, 89, 4, 0.12);
+}
+
+/* Ombre douce quand le menu mobile <details> est ouvert */
+details[open] .menu-surface {
+  box-shadow: var(--shadow-xl);
 }

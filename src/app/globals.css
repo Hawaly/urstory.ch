@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Définition des animations */
 @keyframes pulse {
@@ -92,6 +94,12 @@
   --foreground: #000000;
   --accent: #FD5904;
   
+  /* Surface colors */
+  --surface: #FFFFFF;
+  --surface-foreground: #0F172A;
+  --surface-muted: #F8FAFC;
+  --surface-bright: #FFFFFF;
+  
   /* Orange tints & shades */
   --orange-50: #FFF7F2;
   --orange-100: #FFEDE0;
@@ -111,15 +119,44 @@
   --orange-alpha-15: rgba(253, 89, 4, 0.15);
   --orange-alpha-20: rgba(253, 89, 4, 0.20);
   --orange-alpha-30: rgba(253, 89, 4, 0.30);
+  --orange-alpha-40: rgba(253, 89, 4, 0.40);
+  --orange-alpha-50: rgba(253, 89, 4, 0.50);
   
-  /* Glassmorphism tokens */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-bg-strong: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.3);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  --glass-shadow-hover: 0 12px 48px rgba(253, 89, 4, 0.15);
+  /* ===== SYSTÈME D'ÉLÉVATION ===== */
   
-  /* Elevation shadows */
+  /* Niveau 1: Base (éléments au niveau du contenu) */
+  --glass-base-bg: rgba(255, 255, 255, 0.6);
+  --glass-base-border: rgba(255, 255, 255, 0.3);
+  --glass-base-blur: 8px;
+  --glass-base-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --glass-base-saturation: 1.1;
+  
+  /* Niveau 2: Surélevé (cartes, sections importantes) */
+  --glass-elevated-bg: rgba(255, 255, 255, 0.7);
+  --glass-elevated-border: rgba(255, 255, 255, 0.4);
+  --glass-elevated-blur: 12px;
+  --glass-elevated-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --glass-elevated-saturation: 1.2;
+  
+  /* Niveau 3: Overlay (modales, popovers, éléments flottants) */
+  --glass-overlay-bg: rgba(255, 255, 255, 0.85);
+  --glass-overlay-border: rgba(255, 255, 255, 0.5);
+  --glass-overlay-blur: 16px;
+  --glass-overlay-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+  --glass-overlay-saturation: 1.3;
+  
+  /* États interactifs */
+  --glass-hover-lift: translateY(-2px);
+  --glass-hover-scale: scale(1.02);
+  --glass-hover-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+  --glass-hover-shadow-accent: 0 12px 36px rgba(253, 89, 4, 0.18);
+  
+  /* Ombres accentuées */
+  --shadow-accent-sm: 0 4px 16px rgba(253, 89, 4, 0.12);
+  --shadow-accent-md: 0 8px 24px rgba(253, 89, 4, 0.18);
+  --shadow-accent-lg: 0 16px 48px rgba(253, 89, 4, 0.25);
+  
+  /* Ombres neutres */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
@@ -132,6 +169,17 @@
   --radius-lg: 1.5rem;
   --radius-xl: 2rem;
   --radius-full: 9999px;
+  
+  /* Typography */
+  --font-heading: 600 1em/1.2 'Inter', system-ui, sans-serif;
+  --font-body: 400 1em/1.5 'Inter', system-ui, sans-serif;
+  
+  /* Animation timings */
+  --transition-fast: 200ms;
+  --transition-base: 300ms;
+  --transition-slow: 500ms;
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 @theme inline {
@@ -197,6 +245,426 @@ summary {
 .formats:has(#format-camera:checked) [data-format="camera"] {
   border-color: var(--orange-500);
   box-shadow: 0 24px 64px rgba(253, 89, 4, 0.12);
+}
+
+/* ===== Tailwind layers: base + utilities (stylistic only) ===== */
+@layer base {
+  ::selection {
+    background-color: var(--accent);
+    color: #fff;
+  }
+}
+
+/* stylelint-disable */
+/* Les directives @apply sont spécifiques à Tailwind CSS et peuvent générer des avertissements dans certains IDE */
+@layer utilities {
+  /* ===== SYSTÈME GLASSMORPHISM ===== */
+  
+  .glass-base {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: all 300ms;
+    backdrop-filter: blur(8px) saturate(1.1);
+  }
+  
+  .glass-elevated {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: all 300ms;
+    backdrop-filter: blur(12px) saturate(1.2);
+  }
+  
+  .glass-overlay {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10);
+    transition: all 300ms;
+    backdrop-filter: blur(16px) saturate(1.3);
+  }
+  
+  .glass-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .glass-hover-accent:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 4px 16px rgba(253, 89, 4, 0.12);
+    border-color: rgba(253, 89, 4, 0.3);
+  }
+  
+  /* Section width + padding container */
+  .section {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .section {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .section {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Soft card surface */
+  .card-soft {
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(16px);
+  }
+
+  /* Premium card with enhanced glassmorphism */
+  .card-premium {
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(24px) saturate(1.5);
+  }
+
+  /* Hover lift micro-interaction */
+  .card-hover {
+    transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Subtle hover for smaller elements */
+  .hover-lift-sm {
+    transition: all 200ms ease-out;
+  }
+  
+  .hover-lift-sm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Système de boutons */
+  .btn-base {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.75rem 1.25rem;
+    font-weight: 500;
+    transition: all 300ms ease-out;
+  }
+  
+  .btn-base:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent);
+  }
+
+  /* Bouton primaire */
+  /* Déjà défini plus haut */
+  
+  /* Bouton secondaire */
+  /* Déjà défini plus haut */
+  
+  /* Bouton tertiaire/ghost */
+  .btn-tertiary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.75rem 1.25rem;
+    font-weight: 500;
+    color: #374151;
+    transition: all 300ms ease-out;
+  }
+  
+  .btn-tertiary:hover {
+    background-color: var(--orange-alpha-5);
+    color: var(--accent);
+  }
+  
+  .btn-tertiary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent);
+  }
+
+  /* Premium headings with fluid typography */
+  .h1-premium { 
+    font-size: clamp(2.25rem, 1.8rem + 2.25vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+  
+  @media (min-width: 640px) {
+    .h1-premium {
+      font-size: clamp(3rem, 2.4rem + 3vw, 4rem);
+    }
+  }
+  
+  .h2-premium { 
+    font-size: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+  
+  @media (min-width: 640px) {
+    .h2-premium {
+      font-size: clamp(2.25rem, 1.8rem + 2.25vw, 3rem);
+    }
+  }
+  
+  .h3-premium { 
+    font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+  
+  @media (min-width: 640px) {
+    .h3-premium {
+      font-size: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+    }
+  }
+  
+  /* Paragraph variants */
+  .p-muted { 
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    line-height: 1.7;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .p-lead { 
+    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+    line-height: 1.7;
+    color: #374151;
+  }
+  
+  /* Text gradient utilities */
+  .text-gradient-orange {
+    background: linear-gradient(to right, var(--orange-600), var(--orange-500), var(--orange-400));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  /* Glassmorphism badge */
+  .badge-glass {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Composants glassmorphism */
+  .glass-card {
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: all 300ms;
+    backdrop-filter: blur(12px) saturate(1.2);
+  }
+  
+  .glass-card-premium {
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: all 300ms;
+    backdrop-filter: blur(12px) saturate(1.2);
+  }
+  .glass-card-premium:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .glass-nav {
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10);
+    transition: all 300ms;
+    backdrop-filter: blur(16px) saturate(1.3);
+  }
+  
+  .glass-modal {
+    border-radius: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10);
+    transition: all 300ms;
+    backdrop-filter: blur(16px) saturate(1.3);
+  }
+  
+  .glass-badge {
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: all 300ms;
+    backdrop-filter: blur(8px) saturate(1.1);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  
+  /* Premium button styles */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    background: linear-gradient(to right, var(--orange-600), var(--orange-500));
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0 8px 32px rgba(253, 89, 4, 0.2);
+    transition: all 300ms;
+  }
+  
+  .btn-primary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 16px 48px rgba(253, 89, 4, 0.3);
+  }
+  
+  .btn-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--orange-500);
+  }
+  
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1f2937;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: all 300ms;
+    backdrop-filter: blur(8px);
+  }
+  
+  .btn-secondary:hover {
+    background-color: white;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+  
+  .btn-secondary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(253, 89, 4, 0.5);
+  }
+  
+  /* Animation utilities */
+  .animate-fade-up {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 700ms ease-out, transform 700ms ease-out;
+  }
+  
+  .animate-fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .animate-fade-in {
+    opacity: 0;
+    transition: opacity 500ms ease-out;
+  }
+  
+  .animate-fade-in.in-view {
+    opacity: 1;
+  }
+  
+  .animate-scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
+  }
+  
+  .animate-scale-in.in-view {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Respecter prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-up,
+    .animate-fade-in,
+    .animate-scale-in,
+    .animate-pulse-subtle,
+    .animate-float-slow,
+    .glass-hover,
+    .glass-hover-accent {
+      transition: none !important;
+      transform: none !important;
+      animation: none !important;
+    }
+  }
+  
+  /* Smooth scroll behavior */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+  
+  /* Focus ring premium */
+  .focus-premium:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent);
+  }
+  
+  /* Premium section styling */
+  .section-premium {
+    position: relative;
+    overflow: hidden;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  @media (min-width: 640px) {
+    .section-premium {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+  
+  .section-premium::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, var(--orange-alpha-15) 0%, transparent 70%);
+    opacity: 0.3;
+    pointer-events: none;
+  }
 }
 
 /* Ombre douce quand le menu mobile <details> est ouvert */

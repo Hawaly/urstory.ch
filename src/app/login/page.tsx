@@ -104,7 +104,7 @@ export default function LoginPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900">Analytics avancés</p>
-                  <p className="text-xs text-gray-600">Mesurez l'impact de vos contenus</p>
+                  <p className="text-xs text-gray-600">Mesurez l&apos;impact de vos contenus</p>
                 </div>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function LoginPage() {
               href="/"
               className="block w-full rounded-full bg-gradient-to-r from-orange-600 to-orange-500 px-6 py-4 text-center text-base font-semibold text-white shadow-xl shadow-orange-500/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/40"
             >
-              Retour à l'accueil
+              Retour à l&apos;accueil
             </Link>
 
             {/* Contact info */}

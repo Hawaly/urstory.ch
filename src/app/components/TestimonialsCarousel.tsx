@@ -116,7 +116,7 @@ export default function TestimonialsCarousel({ testimonials }: TestimonialsCarou
           className="flex gap-6 sm:gap-8 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory pb-2"
           style={{ scrollSnapType: 'x mandatory' }}
         >
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial) => (
             <div
               key={testimonial.name}
               className="group relative flex-shrink-0 w-[90vw] sm:w-[50vw] md:w-[35vw] lg:w-[30vw] rounded-2xl sm:rounded-3xl border-2 border-white/50 bg-gradient-to-br from-white/60 via-white/50 to-orange-50/30 px-6 sm:px-8 md:px-10 py-8 sm:py-10 md:py-12 shadow-2xl backdrop-blur-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:border-orange-500/40 hover:bg-gradient-to-br hover:from-white/70 hover:via-white/60 hover:to-orange-50/40 hover:shadow-[0_30px_70px_rgba(253,89,4,0.15)] snap-start"

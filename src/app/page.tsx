@@ -319,7 +319,7 @@ function HeroSection() {
         </div>
         
         <h1 className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[3.25rem] font-bold leading-[1.1] tracking-tight text-gray-900 animate-fade-up" style={{ animationDelay: '100ms' }}>
-          <span className="block bg-gradient-to-r from-[var(--orange-600)] via-[var(--orange-500)] to-[var(--orange-400)] bg-clip-text text-transparent drop-shadow-sm">Votre histoire mérite d'être vue</span>
+          <span className="block bg-gradient-to-r from-[var(--orange-600)] via-[var(--orange-500)] to-[var(--orange-400)] bg-clip-text text-transparent drop-shadow-sm">Votre histoire mérite d&apos;être vue</span>
           <span className="block mt-1 sm:mt-2">Nous en faisons des vidéos qui explosent vos ventes</span>
         </h1>
         

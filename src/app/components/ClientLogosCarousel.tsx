@@ -109,7 +109,7 @@ export default function ClientLogosCarousel({ logos }: ClientLogosCarouselProps)
         className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
         style={{ scrollSnapType: 'x mandatory' }}
       >
-        {logos.map((logo, index) => (
+        {logos.map((logo) => (
           <div
             key={logo.alt}
             className="group relative flex items-center justify-center flex-shrink-0 h-20 sm:h-24 md:h-28 w-32 sm:w-40 md:w-48 p-3 sm:p-4 rounded-lg sm:rounded-xl border border-white/30 bg-white/40 backdrop-blur-xl transition-all duration-500 hover:border-orange-500/40 hover:bg-white/60 hover:shadow-xl hover:scale-110 snap-start"

@@ -66,7 +66,7 @@ const KPI_CARDS = [
     description: "En moyenne, nos clients multiplient leurs conversions grâce à des vidéos qui racontent leur histoire.",
   },
   {
-    title: "10x plus d'engagement",
+    title: "10x plus d&apos;engagement",
     description: "Vos vidéos génèrent des likes, partages et commentaires qui boostent votre visibilité organique.",
   },
   {
@@ -87,7 +87,7 @@ const OFFERS = [
       "Création de 4 carrousels engageants",
       "Proposition de 15 concepts créatifs",
       "Rédaction de scripts optimisés SEO",
-      "Activation d'un acteur professionnel",
+      "Activation d&apos;un acteur professionnel",
       "Tournage et montage complet en interne",
       "Modifications illimitées jusqu'à satisfaction",
       "Publication et suivi des performances",
@@ -103,7 +103,7 @@ const OFFERS = [
       "Production de 6 vidéos optimisées",
       "Proposition de 15 concepts créatifs",
       "Rédaction de scripts orientés conversion",
-      "Activation d'un acteur professionnel",
+      "Activation d&apos;un acteur professionnel",
       "Tournage et montage premium",
       "Modifications illimitées",
       "Publication clé en main",
@@ -113,23 +113,23 @@ const OFFERS = [
 
 const TESTIMONIALS = [
   {
-    quote: "YourStory a su capturer la vibe unique de ClassiGym avec une qualité exceptionnelle. Leur travail reflète parfaitement notre énergie et notre passion pour le fitness. Chaque vidéo respire l'authenticité !",
+    quote: "YourStory a su capturer la vibe unique de ClassiGym avec une qualité exceptionnelle. Leur travail reflète parfaitement notre énergie et notre passion pour le fitness. Chaque vidéo respire l&apos;authenticité !",
     name: "Alessio, Fondateur @ ClassiGym",
   },
   {
-    quote: "Des stratégies créatives qui font la différence ! L'équipe YourStory comprend notre vision et crée des contenus dans une superbe ambiance de travail. Leur créativité booste vraiment notre image de marque.",
+    quote: "Des stratégies créatives qui font la différence ! L&apos;équipe YourStory comprend notre vision et crée des contenus dans une superbe ambiance de travail. Leur créativité booste vraiment notre image de marque.",
     name: "Sami, Fondateur @ NxtLvl",
   },
   {
-    quote: "La créativité et l'ambiance que YourStory apporte à nos vidéos sont incroyables. Ils ont su créer un univers visuel qui correspond parfaitement à l'identité de Boca. Nos clients sont conquis !",
+    quote: "La créativité et l&apos;ambiance que YourStory apporte à nos vidéos sont incroyables. Ils ont su créer un univers visuel qui correspond parfaitement à l&apos;identité de Boca. Nos clients sont conquis !",
     name: "Fabio, Gérant @ Boca Food & Juice",
   },
   {
-    quote: "Résultat exceptionnel : notre chiffre d'affaires a doublé grâce aux vidéos YourStory ! Leur approche professionnelle et leur compréhension de notre marché ont fait toute la différence.",
+    quote: "Résultat exceptionnel : notre chiffre d&apos;affaires a doublé grâce aux vidéos YourStory ! Leur approche professionnelle et leur compréhension de notre marché ont fait toute la différence.",
     name: "Mohammed, Directeur @ Alibaba",
   },
   {
-    quote: "Process ultra professionnel de A à Z. L'équipe a capté l'essence de notre concept healthy et ça se voit dans chaque vidéo. Nos clients adorent !",
+    quote: "Process ultra professionnel de A à Z. L&apos;équipe a capté l&apos;essence de notre concept healthy et ça se voit dans chaque vidéo. Nos clients adorent !",
     name: "Sofian, Fondateur @ Sraps",
   },
   {
@@ -570,14 +570,14 @@ function MethodSection() {
       number: 1,
       title: "Stratégie",
       emoji: "🎯",
-      description: "On plonge dans l'univers de ta marque pour comprendre tes clients, tes concurrents et créer un plan d'attaque vidéo qui déchire.",
+      description: "On plonge dans l&apos;univers de ta marque pour comprendre tes clients, tes concurrents et créer un plan d&apos;attaque vidéo qui déchire.",
       side: "left"
     },
     {
       number: 2,
       title: "Concepts",
       emoji: "💡",
-      description: "On te balance une quinzaine d'idées créatives testées et approuvées, conçues pour faire stopper le scroll de ton audience.",
+      description: "On te balance une quinzaine d&apos;idées créatives testées et approuvées, conçues pour faire stopper le scroll de ton audience.",
       side: "right"
     },
     {
@@ -605,7 +605,7 @@ function MethodSection() {
       number: 6,
       title: "Montage",
       emoji: "✂️",
-      description: "On peaufine chaque seconde : cuts dynamiques, sous-titres accros, effets sonores et couleurs calibrées pour maximiser l'engagement.",
+      description: "On peaufine chaque seconde : cuts dynamiques, sous-titres accros, effets sonores et couleurs calibrées pour maximiser l&apos;engagement.",
       side: "right"
     },
     {

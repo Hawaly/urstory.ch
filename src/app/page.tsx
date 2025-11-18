@@ -6,6 +6,8 @@ import VideoPlayer from './components/VideoPlayer';
 import CalendlyButton from './components/CalendlyButton';
 import PremiumFooter from './components/PremiumFooter';
 import MethodSectionClient from './components/MethodSectionClient';
+import ClientLogosCarousel from './components/ClientLogosCarousel';
+import TestimonialsCarousel from './components/TestimonialsCarousel';
 
 const NAV_LINKS = [
   { href: '#hero', label: 'Accueil' },
@@ -111,16 +113,28 @@ const OFFERS = [
 
 const TESTIMONIALS = [
   {
-    quote: "Votre équipe a transformé nos insights clients en un récit puissant qui convertit.",
-    name: "Sarah, VP Growth @ Loop",
+    quote: "YourStory a su capturer la vibe unique de ClassiGym avec une qualité exceptionnelle. Leur travail reflète parfaitement notre énergie et notre passion pour le fitness. Chaque vidéo respire l'authenticité !",
+    name: "Alessio, Fondateur @ ClassiGym",
   },
   {
-    quote: "Process hyper fluide, livrables impeccables et analyse data actionnable.",
-    name: "Ibrahim, Head of Marketing @ Mora",
+    quote: "Des stratégies créatives qui font la différence ! L'équipe YourStory comprend notre vision et crée des contenus dans une superbe ambiance de travail. Leur créativité booste vraiment notre image de marque.",
+    name: "Sami, Fondateur @ NxtLvl",
   },
   {
-    quote: "Chaque vidéo raconte notre histoire avec une simplicité désarmante.",
-    name: "Nora, Fondatrice @ Atelier Nord",
+    quote: "La créativité et l'ambiance que YourStory apporte à nos vidéos sont incroyables. Ils ont su créer un univers visuel qui correspond parfaitement à l'identité de Boca. Nos clients sont conquis !",
+    name: "Fabio, Gérant @ Boca Food & Juice",
+  },
+  {
+    quote: "Résultat exceptionnel : notre chiffre d'affaires a doublé grâce aux vidéos YourStory ! Leur approche professionnelle et leur compréhension de notre marché ont fait toute la différence.",
+    name: "Mohammed, Directeur @ Alibaba",
+  },
+  {
+    quote: "Process ultra professionnel de A à Z. L'équipe a capté l'essence de notre concept healthy et ça se voit dans chaque vidéo. Nos clients adorent !",
+    name: "Sofian, Fondateur @ Sraps",
+  },
+  {
+    quote: "Enfin des vidéos qui nous ressemblent ! YourStory a su mettre en valeur notre univers barbershop avec un style moderne et authentique. Résultat : +40% de nouveaux clients.",
+    name: "Ahmed, Co-fondateur @ MeliMelo Barbershop",
   },
 ];
 
@@ -178,7 +192,7 @@ export default function Page() {
         <div className="absolute inset-0 noise" />
       </div>
 
-      <div className="relative z-10 pb-28">
+      <div className="relative z-10">
         <Header />
         <main>
           <HeroSection />
@@ -194,7 +208,6 @@ export default function Page() {
           <FinalCTASection />
         </main>
 
-        <FloatingCTA />
         <PremiumFooter />
       </div>
     </div>
@@ -203,67 +216,68 @@ export default function Page() {
 
 function Header() {
   return (
-    <header className="sticky top-0 z-50 px-3 py-3 md:px-6 md:py-4">
-      <div className="mx-auto flex max-w-5xl items-center justify-between glass-nav px-4 py-2.5 md:px-6 md:py-3.5">
+    <header className="sticky top-0 z-50 px-3 py-2 sm:px-4 sm:py-2.5 md:px-6 md:py-3">
+      <div className="mx-auto flex max-w-5xl items-center justify-between glass-nav px-3 py-2 sm:px-4 sm:py-2.5 md:px-6 md:py-3.5">
         {/* Logo glow effect - hidden on mobile */}
         <div className="absolute left-6 top-1/2 -z-10 h-12 w-12 -translate-y-1/2 rounded-full bg-orange-500/20 blur-xl animate-pulse-subtle hidden md:block" />
         
-        <Link href="#hero" className="flex items-center gap-3 group relative" aria-label="YourStory – Accueil">
+        <Link href="#hero" className="flex items-center gap-2 sm:gap-3 group relative" aria-label="YourStory – Accueil">
           <div className="relative">
             <Image 
               src="/images/logos/urstoryBlack.png" 
               alt="YourStory Logo" 
               width={140} 
               height={40}
-              className="h-7 w-auto md:h-10 transition-all duration-300 group-hover:scale-105"
+              className="h-6 w-auto sm:h-7 md:h-10 transition-all duration-300 group-hover:scale-105"
               priority
             />
             <div className="absolute -inset-1 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-orange-500/10 blur-lg rounded-full" />
           </div>
           {/* Texte YourStory - caché sur mobile */}
-          <span className="hidden md:inline text-xl font-bold tracking-tight text-gray-900 transition-colors duration-300 group-hover:bg-gradient-to-r group-hover:from-[var(--orange-600)] group-hover:to-[var(--orange-500)] group-hover:bg-clip-text group-hover:text-transparent">YourStory</span>
+          <span className="hidden lg:inline text-lg md:text-xl font-bold tracking-tight text-gray-900 transition-colors duration-300 group-hover:bg-gradient-to-r group-hover:from-[var(--orange-600)] group-hover:to-[var(--orange-500)] group-hover:bg-clip-text group-hover:text-transparent">YourStory</span>
         </Link>
         
-        <nav className="hidden items-center gap-8 text-sm font-medium text-gray-700 md:flex" aria-label="Navigation principale">
+        <nav className="hidden items-center gap-6 lg:gap-8 text-xs sm:text-sm font-medium text-gray-700 lg:flex" aria-label="Navigation principale">
           {NAV_LINKS.map((link) => (
             <a 
               key={link.href} 
               href={link.href} 
-              className="relative transition-all duration-200 hover:text-[var(--accent)] after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-[var(--orange-500)] after:to-[var(--orange-400)] after:transition-all after:duration-300 hover:after:w-full"
+              className="relative transition-all duration-200 hover:text-[var(--accent)] after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-[var(--orange-500)] after:to-[var(--orange-400)] after:transition-all after:duration-300 hover:after:w-full whitespace-nowrap"
             >
               {link.label}
             </a>
           ))}
         </nav>
         
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <a 
             href="/login" 
-            className="hidden md:inline-flex items-center gap-2 rounded-full border-2 border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all duration-200 hover:border-orange-500/40 hover:bg-orange-50 hover:text-orange-600"
+            className="hidden lg:inline-flex items-center gap-2 rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-medium text-gray-700 shadow-sm transition-all duration-200 hover:border-orange-500/40 hover:bg-orange-50 hover:text-orange-600"
           >
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-3.5 w-3.5 md:h-4 md:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
-            <span>Login</span>
+            <span className="hidden xl:inline">Login</span>
           </a>
-          <CalendlyButton className="hidden md:inline-flex btn-primary !px-4 !py-2 !text-sm">
-            <span>Prendre un rendez-vous</span>
-            <ArrowRightIcon className="h-3.5 w-3.5 transition-transform duration-300 hover:translate-x-1" />
+          <CalendlyButton className="hidden lg:inline-flex btn-primary !px-3 !py-1.5 md:!px-4 md:!py-2 !text-xs md:!text-sm">
+            <span className="hidden xl:inline">Prendre un rendez-vous</span>
+            <span className="xl:hidden">RDV</span>
+            <ArrowRightIcon className="h-3 w-3 md:h-3.5 md:w-3.5 transition-transform duration-300 hover:translate-x-1" />
           </CalendlyButton>
-          <details className="md:hidden">
+          <details className="lg:hidden">
             <summary
               aria-label="Ouvrir le menu"
-              className="grid h-9 w-9 place-items-center rounded-lg border-2 border-white/40 bg-white/40 backdrop-blur-xl text-gray-800 transition-all duration-200 hover:border-orange-500/40 hover:bg-white/50 hover:text-[var(--accent)] list-none cursor-pointer shadow-lg"
+              className="grid h-8 w-8 sm:h-9 sm:w-9 place-items-center rounded-lg border-2 border-white/40 bg-white/40 backdrop-blur-xl text-gray-800 transition-all duration-200 hover:border-orange-500/40 hover:bg-white/50 hover:text-[var(--accent)] list-none cursor-pointer shadow-lg"
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" aria-hidden="true">
                 <path d="M4 6h16M4 12h16M4 18h16" strokeWidth="2.5" strokeLinecap="round" />
               </svg>
             </summary>
-            <div className="absolute top-full left-0 right-0 mt-3 px-3">
-              <div className="menu-surface mx-auto max-w-5xl rounded-[var(--radius-xl)] border-2 border-white/40 bg-white/35 backdrop-blur-2xl shadow-2xl p-5">
+            <div className="absolute top-full left-0 right-0 mt-2 sm:mt-3 px-3 sm:px-4">
+              <div className="menu-surface mx-auto max-w-5xl rounded-[var(--radius-xl)] border-2 border-white/40 bg-white/35 backdrop-blur-2xl shadow-2xl p-4 sm:p-5">
                 <nav className="grid gap-2 text-sm font-semibold text-gray-800">
                   {NAV_LINKS.map((link) => (
-                    <a key={link.href} href={link.href} className="rounded-lg px-4 py-3 transition-all duration-200 hover:bg-orange-500/10 hover:text-[var(--accent)]">
+                    <a key={link.href} href={link.href} className="rounded-lg px-4 py-2.5 sm:py-3 transition-all duration-200 hover:bg-orange-500/10 hover:text-[var(--accent)]">
                       {link.label}
                     </a>
                   ))}
@@ -271,14 +285,14 @@ function Header() {
                 <div className="mt-4 space-y-2">
                   <a 
                     href="/login" 
-                    className="flex items-center justify-center gap-2 rounded-lg border-2 border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition-all duration-200 hover:bg-orange-50 hover:border-orange-500/40 hover:text-orange-600"
+                    className="flex items-center justify-center gap-2 rounded-lg border-2 border-gray-200 bg-white px-4 py-2.5 sm:py-3 text-sm font-semibold text-gray-700 transition-all duration-200 hover:bg-orange-50 hover:border-orange-500/40 hover:text-orange-600"
                   >
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                     <span>Login Espace Client</span>
                   </a>
-                  <CalendlyButton className="block btn-primary text-center">
+                  <CalendlyButton className="block btn-primary text-center w-full">
                     Prendre un rendez-vous
                   </CalendlyButton>
                 </div>
@@ -293,41 +307,41 @@ function Header() {
 
 function HeroSection() {
   return (
-    <section id="hero" className="relative px-4 pt-24 md:px-6 lg:pt-28 section scroll-mt-28 md:scroll-mt-32">
+    <section id="hero" className="relative px-4 pt-12 sm:pt-16 md:px-6 md:pt-20 lg:pt-24 section scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32">
       {/* Hero gradient halo */}
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,_var(--orange-alpha-15)_0%,_transparent_70%)] blur-3xl animate-pulse-subtle" />
-      <div aria-hidden className="pointer-events-none absolute right-1/4 top-1/4 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,_var(--orange-alpha-10)_0%,_transparent_70%)] blur-3xl animate-float-slow" />
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[400px] sm:h-[500px] sm:w-[500px] md:h-[600px] md:w-[600px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,_var(--orange-alpha-15)_0%,_transparent_70%)] blur-3xl animate-pulse-subtle" />
+      <div aria-hidden className="pointer-events-none absolute right-1/4 top-1/4 h-[300px] w-[300px] sm:h-[350px] sm:w-[350px] md:h-[400px] md:w-[400px] rounded-full bg-[radial-gradient(circle,_var(--orange-alpha-10)_0%,_transparent_70%)] blur-3xl animate-float-slow" />
       
       <div className="relative mx-auto max-w-4xl text-center">
-        <div className="glass-badge inline-flex items-center gap-3 px-5 py-2">
-          <span className="glass-base rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-[var(--accent)] shadow-sm">CH</span>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">Agence suisse experte en vidéos verticales</span>
+        <div className="glass-badge inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2">
+          <span className="glass-base rounded-full px-2 sm:px-2.5 py-0.5 sm:py-1 text-[8px] sm:text-[9px] font-bold uppercase tracking-wide text-[var(--accent)] shadow-sm">CH</span>
+          <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-gray-700">Agence suisse experte en vidéos verticales</span>
         </div>
         
-        <h1 className="mt-5 text-3xl font-bold leading-[1.1] tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-[3.25rem] animate-fade-up" style={{ animationDelay: '100ms' }}>
-          <span className="block bg-gradient-to-r from-[var(--orange-600)] via-[var(--orange-500)] to-[var(--orange-400)] bg-clip-text text-transparent drop-shadow-sm">Votre histoire mérite d’être vue</span>
-          Nous en faisons des vidéos qui explosent vos ventes
+        <h1 className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[3.25rem] font-bold leading-[1.1] tracking-tight text-gray-900 animate-fade-up" style={{ animationDelay: '100ms' }}>
+          <span className="block bg-gradient-to-r from-[var(--orange-600)] via-[var(--orange-500)] to-[var(--orange-400)] bg-clip-text text-transparent drop-shadow-sm">Votre histoire mérite d'être vue</span>
+          <span className="block mt-1 sm:mt-2">Nous en faisons des vidéos qui explosent vos ventes</span>
         </h1>
         
-        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gray-700 sm:text-base animate-fade-up" style={{ animationDelay: '200ms' }}>
+        <p className="mx-auto mt-3 sm:mt-4 max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed text-gray-700 px-2 sm:px-0 animate-fade-up" style={{ animationDelay: '200ms' }}>
           100% de clients satisfaits, +20 entreprises locales accompagnées et des vidéos qui apportent vraiment des résultats.
         </p>
         
-        <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3 animate-fade-up" style={{ animationDelay: '300ms' }}>
+        <div className="relative mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3 px-4 sm:px-0 animate-fade-up" style={{ animationDelay: '300ms' }}>
           {/* CTA glow effect */}
           <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-32 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--orange-alpha-20)] blur-2xl animate-pulse-subtle" />
           
-          <CalendlyButton className="btn-primary">
-            <span>Je veux faire exploser ma marque</span>
-            <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 hover:translate-x-1" />
+          <CalendlyButton className="btn-primary text-sm sm:text-base">
+            <span className="whitespace-nowrap">Je veux faire exploser ma marque</span>
+            <ArrowRightIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform duration-300 hover:translate-x-1" />
           </CalendlyButton>
         </div>
         
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2 animate-fade-up" style={{ animationDelay: '400ms' }}>
+        <div className="mt-4 sm:mt-6 flex flex-wrap items-center justify-center gap-2 px-4 sm:px-0 animate-fade-up" style={{ animationDelay: '400ms' }}>
           {GUARANTEES.map((guarantee) => (
             <span
               key={guarantee}
-              className="glass-badge px-3 py-1.5 text-[10px] uppercase tracking-[0.15em] text-gray-700"
+              className="glass-badge px-2.5 sm:px-3 py-1 sm:py-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.1em] sm:tracking-[0.15em] text-gray-700"
             >
               {guarantee}
             </span>
@@ -340,66 +354,78 @@ function HeroSection() {
 
 function VideoSection() {
   return (
-    <section className="px-4 pt-12 md:px-6 animate-fade-up" style={{ animationDelay: '500ms' }}>
-      <div className="mx-auto max-w-5xl overflow-hidden rounded-[var(--radius-xl)] border-2 border-white/40 bg-white/30 backdrop-blur-2xl shadow-2xl transition-all duration-500 hover:border-white/60 hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
-        <VideoPlayer videoId="76979871" title="Showreel vidéo YourStory" size="large" />
+    <section className="px-4 pt-8 sm:pt-10 md:pt-12 md:px-6 animate-fade-up" style={{ animationDelay: '500ms' }}>
+      <div className="mx-auto max-w-5xl overflow-hidden rounded-[var(--radius-lg)] sm:rounded-[var(--radius-xl)] border-2 border-white/40 bg-gradient-to-br from-white/40 via-orange-50/30 to-white/40 backdrop-blur-2xl shadow-2xl transition-all duration-500 hover:border-orange-500/40 hover:shadow-[0_20px_60px_rgba(253,89,4,0.15)]">
+        {/* Placeholder vidéo en attente */}
+        <div className="relative aspect-video flex flex-col items-center justify-center p-8 sm:p-12 md:p-16">
+          {/* Effet de fond animé */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-radial from-orange-500/10 via-orange-400/5 to-transparent blur-3xl animate-pulse-subtle" />
+          </div>
+          
+          {/* Contenu */}
+          <div className="relative z-10 text-center space-y-4 sm:space-y-6">
+            {/* Icône vidéo */}
+            <div className="mx-auto flex h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-orange-600 shadow-xl shadow-orange-500/30 animate-pulse-subtle">
+              <svg 
+                className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 text-white ml-1" 
+                fill="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+            
+            {/* Texte */}
+            <div className="space-y-2 sm:space-y-3">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
+                Vidéo en préparation
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600 max-w-md mx-auto">
+                Notre showreel arrive bientôt. En attendant, découvrez nos réalisations ci-dessous.
+              </p>
+            </div>
+            
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-white/80 px-4 py-2 text-xs sm:text-sm font-medium text-orange-600 backdrop-blur-md shadow-sm">
+              <SparkleIcon className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span>Bientôt disponible</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <p className="mt-4 text-center text-sm text-gray-600 animate-fade-up" style={{ animationDelay: '600ms' }}>Nous avons déjà fait exploser <span className="font-semibold text-[var(--accent)]">+20 entreprises</span>.</p>
+      <p className="mt-3 sm:mt-4 text-center text-xs sm:text-sm text-gray-600 px-2 sm:px-0 animate-fade-up" style={{ animationDelay: '600ms' }}>Nous avons déjà fait exploser <span className="font-semibold text-[var(--accent)]">+20 entreprises</span>.</p>
     </section>
   );
 }
 
 function LogosSection() {
+  const clientLogos = [
+    { src: '/images/logos/clientLogos/alibaba.png', alt: 'Alibaba' },
+    { src: '/images/logos/clientLogos/classiGym.cpng.png', alt: 'ClassiGym' },
+    { src: '/images/logos/clientLogos/ladifférence.png', alt: 'La Différence' },
+    { src: '/images/logos/clientLogos/Lespot.png', alt: 'Le Spot' },
+    { src: '/images/logos/clientLogos/logo_sraps.png', alt: 'Sraps' },
+    { src: '/images/logos/clientLogos/logo-boca-scaled.png', alt: 'Boca Food & Juice' },
+    { src: '/images/logos/clientLogos/melimeloLogo.png', alt: 'MeliMelo' },
+    { src: '/images/logos/clientLogos/nxtlvl.png', alt: 'NxtLvl' },
+  ];
+
   return (
-    <section id="portfolio" className="relative overflow-hidden px-4 py-16 md:px-6 section scroll-mt-28 md:scroll-mt-32">
+    <section id="portfolio" className="relative overflow-hidden px-4 py-12 sm:py-16 md:px-6 md:py-20 section scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32">
       {/* Décor de fond avec orbes */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] bg-gradient-radial from-[var(--orange-alpha-10)] to-transparent blur-3xl animate-pulse-subtle" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[400px] sm:h-[500px] sm:w-[500px] md:h-[600px] md:w-[600px] bg-gradient-radial from-[var(--orange-alpha-10)] to-transparent blur-3xl animate-pulse-subtle" />
       </div>
       
       <div className="mx-auto max-w-4xl text-center animate-fade-up" style={{ animationDelay: '700ms' }}>
-        {/* Conteneur glass blur pour le logo */}
-        <div className="relative mx-auto max-w-md">
-          {/* Glow effect autour du conteneur */}
-          <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 via-orange-400/20 to-orange-500/20 rounded-[2rem] blur-2xl opacity-60 animate-pulse-subtle" />
+        {/* Client Logos Section - Carousel avec boutons */}
+        <div>
+          <p className="text-xs sm:text-sm text-gray-600 mb-6 sm:mb-8 font-medium">
+            Ils nous font confiance
+          </p>
           
-          {/* Carte glass blur */}
-          <div className="relative glass-card-premium rounded-[var(--radius-xl)] p-12 backdrop-blur-2xl border-2 border-white/40 shadow-2xl">
-            {/* Logo YourStory */}
-            <div className="relative group">
-              <Image 
-                src="/images/logos/urstoryBlack.png" 
-                alt="YourStory - Production Vidéo Premium" 
-                width={280} 
-                height={80}
-                className="mx-auto h-20 w-auto transition-all duration-500 group-hover:scale-105"
-                priority
-              />
-              <div className="absolute -inset-2 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-orange-500/10 via-orange-400/10 to-orange-500/10 blur-xl rounded-full" />
-            </div>
-            
-            {/* Séparateur décoratif */}
-            <div className="my-8 flex items-center justify-center gap-4">
-              <div className="h-[2px] w-16 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent" />
-              <SparkleIcon className="h-5 w-5 text-orange-500 animate-pulse-subtle" />
-              <div className="h-[2px] w-16 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent" />
-            </div>
-            
-            {/* Tagline */}
-            <p className="text-lg font-semibold text-gray-800 tracking-tight">
-              Production vidéo <span className="bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] bg-clip-text text-transparent">premium</span>
-            </p>
-            <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-              Transformez vos histoires en contenus qui performent
-            </p>
-          </div>
-        </div>
-        
-        {/* Badge Trustpilot avec glass blur */}
-        <div className="mt-8 inline-flex items-center justify-center gap-3 rounded-full glass-base px-6 py-3 text-sm font-medium text-gray-700 backdrop-blur-xl border border-white/30 shadow-lg" id="testimonials">
-          <span className="font-bold text-green-600">Excellent</span>
-          <TrustPilotStars />
-          <span className="font-semibold">Trustpilot</span>
+          <ClientLogosCarousel logos={clientLogos} />
         </div>
       </div>
     </section>
@@ -408,52 +434,52 @@ function LogosSection() {
 
 function FormatsSection() {
   return (
-    <section id="cases" className="relative overflow-hidden px-4 py-24 md:px-6 section scroll-mt-28 md:scroll-mt-32">
+    <section id="cases" className="relative overflow-hidden px-4 py-16 sm:py-20 md:py-24 md:px-6 section scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32">
       {/* Section gradient */}
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[var(--orange-alpha-5)] to-transparent" />
-      <div className="relative mx-auto max-w-4xl text-center">
-        <h2 className="text-3xl font-semibold leading-tight text-gray-900 sm:text-4xl md:text-[2.5rem]">
+      <div className="relative mx-auto max-w-4xl text-center px-2 sm:px-0">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-semibold leading-tight text-gray-900">
           L&apos;accompagnement vidéo le plus puissant de <span className="bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] bg-clip-text text-transparent">2025</span> 🏅
         </h2>
-        <p className="mt-6 text-base leading-relaxed text-gray-700 sm:text-lg">
+        <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-gray-700">
           Le point commun entre toutes ces vidéos&nbsp;? Elles ont explosé les performances de nos clients, en publicité ou en organique.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-bold uppercase tracking-wide">
+        <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 text-[10px] sm:text-xs font-bold uppercase tracking-wide">
           <SocialBadge>Instagram</SocialBadge>
           <SocialBadge>TikTok</SocialBadge>
         </div>
-        <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs">
+        <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 text-[10px] sm:text-xs">
           {FORMATS.slice(1).map((format) => (
-            <span key={format.id} className="inline-flex items-center gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/70 px-4 py-2 font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
-              <SparkleIcon className="h-3 w-3" />
+            <span key={format.id} className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/70 px-3 sm:px-4 py-1.5 sm:py-2 font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
+              <SparkleIcon className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
               {format.label}
             </span>
           ))}
         </div>
       </div>
       
-      {/* Vidéos Vimeo - Défilement horizontal sur mobile */}
-      <div className="mt-16">
-        {/* Conteneur avec overflow pour mobile, grid pour desktop */}
+      {/* Vidéos Vimeo - Défilement horizontal sur mobile, grid sur tablet+ */}
+      <div className="mt-12 sm:mt-16">
+        {/* Conteneur avec overflow pour mobile, grid pour tablet+ */}
         <div className="md:mx-auto md:max-w-5xl">
           {/* Mobile: Scroll horizontal avec snap */}
-          <div className="flex gap-6 overflow-x-auto px-4 pb-4 snap-x snap-mandatory scrollbar-hide md:hidden">
+          <div className="flex gap-4 sm:gap-6 overflow-x-auto px-4 pb-4 snap-x snap-mandatory scrollbar-hide md:hidden">
             {[...FORMAT_CARDS, ...ADDITIONAL_VIDEOS].map((card, index) => (
               <div
                 key={card.title}
                 className="flex-shrink-0 w-[85vw] max-w-sm snap-center"
               >
-                <div className="group h-full overflow-hidden rounded-[var(--radius-xl)] border border-white/30 bg-white/60 shadow-xl backdrop-blur-xl transition-all duration-500 hover:border-[var(--orange-alpha-30)] hover:bg-white/70 hover:shadow-2xl hover:shadow-[var(--orange-alpha-15)]">
-                  <div className="p-4 space-y-4">
+                <div className="group h-full overflow-hidden rounded-[var(--radius-lg)] sm:rounded-[var(--radius-xl)] border border-white/30 bg-white/60 shadow-xl backdrop-blur-xl transition-all duration-500 hover:border-[var(--orange-alpha-30)] hover:bg-white/70 hover:shadow-2xl hover:shadow-[var(--orange-alpha-15)]">
+                  <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
                     <VideoPlayer videoId={card.videoId} title={card.videoTitle} size="default" />
                     <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-semibold text-gray-900">{card.title}</h3>
-                        <span className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] px-2.5 py-0.5 text-xs font-medium text-white">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-900 line-clamp-2">{card.title}</h3>
+                        <span className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-xs font-medium text-white flex-shrink-0">
                           {index < 3 ? 'Premium' : 'Standard'}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-700">{card.description}</p>
+                      <p className="text-xs sm:text-sm text-gray-700 line-clamp-3">{card.description}</p>
                     </div>
                   </div>
                 </div>
@@ -461,8 +487,8 @@ function FormatsSection() {
             ))}
           </div>
 
-          {/* Desktop: Grid classique */}
-          <div className="hidden md:grid md:grid-cols-3 gap-8">
+          {/* Tablet & Desktop: Grid responsive */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {[...FORMAT_CARDS, ...ADDITIONAL_VIDEOS].map((card, index) => (
               <div
                 key={card.title}
@@ -471,9 +497,9 @@ function FormatsSection() {
                 <div className="p-4 space-y-4">
                   <VideoPlayer videoId={card.videoId} title={card.videoTitle} size="default" />
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-gray-900">{card.title}</h3>
-                      <span className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] px-2.5 py-0.5 text-xs font-medium text-white">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="text-base lg:text-lg font-semibold text-gray-900">{card.title}</h3>
+                      <span className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] px-2.5 py-0.5 text-xs font-medium text-white flex-shrink-0">
                         {index < 3 ? 'Premium' : 'Standard'}
                       </span>
                     </div>
@@ -489,58 +515,46 @@ function FormatsSection() {
   );
 }
 
-function FloatingCTA() {
-  return (
-    <div className="pointer-events-none fixed bottom-6 right-6 z-20 hidden md:block" id="cta">
-      {/* Glow effect */}
-      <div className="absolute -inset-2 bg-orange-500/20 rounded-full blur-xl animate-pulse-subtle" />
-      <CalendlyButton className="pointer-events-auto btn-primary shadow-[var(--shadow-accent-lg)]">
-        <span>Prendre un rendez-vous</span>
-        <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 hover:translate-x-1" />
-      </CalendlyButton>
-    </div>
-  );
-}
 
 function ResultsSection() {
   return (
-    <section id="results" className="relative overflow-hidden px-4 py-24 md:px-6 section-premium scroll-mt-28 md:scroll-mt-32">
+    <section id="results" className="relative overflow-hidden px-4 py-16 sm:py-20 md:py-24 md:px-6 section-premium scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32">
       {/* Section gradient background */}
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[var(--orange-alpha-5)] to-transparent" />
       
       {/* Accent circles */}
-      <div aria-hidden className="pointer-events-none absolute -left-20 top-40 h-[300px] w-[300px] rounded-full bg-orange-500/5 blur-3xl" />
-      <div aria-hidden className="pointer-events-none absolute -right-20 bottom-20 h-[250px] w-[250px] rounded-full bg-orange-500/5 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute -left-20 top-40 h-[200px] w-[200px] sm:h-[250px] sm:w-[250px] md:h-[300px] md:w-[300px] rounded-full bg-orange-500/5 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute -right-20 bottom-20 h-[150px] w-[150px] sm:h-[200px] sm:w-[200px] md:h-[250px] md:w-[250px] rounded-full bg-orange-500/5 blur-3xl" />
       
       <div className="relative mx-auto max-w-6xl">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end">
-          <div className="flex-1 space-y-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-4 py-1.5 text-xs font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
-              <SparkleIcon className="h-3.5 w-3.5" />
+        <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-end">
+          <div className="flex-1 space-y-3 sm:space-y-4">
+            <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
+              <SparkleIcon className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
               <span>Ce que nos vidéos apportent</span>
             </span>
-            <h2 className="text-3xl font-semibold leading-tight tracking-tight text-gray-900 md:text-4xl lg:text-[2.75rem]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-semibold leading-tight tracking-tight text-gray-900">
               Des vidéos qui <span className="bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] bg-clip-text text-transparent">génèrent des résultats concrets</span> pour votre entreprise.
             </h2>
           </div>
         </div>
         
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-8 sm:mt-10 md:mt-12 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {KPI_CARDS.map((kpi, index) => (
             <div
               key={kpi.title}
-              className="group relative flex h-full flex-col justify-between rounded-[var(--radius-xl)] border-2 border-white/40 bg-white/40 px-6 py-8 shadow-2xl backdrop-blur-2xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:border-orange-500/40 hover:bg-white/50 hover:shadow-[0_25px_60px_rgba(253,89,4,0.15)]"
+              className="group relative flex h-full flex-col justify-between rounded-[var(--radius-lg)] sm:rounded-[var(--radius-xl)] border-2 border-white/40 bg-white/40 px-4 sm:px-5 md:px-6 py-6 sm:py-7 md:py-8 shadow-2xl backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 sm:hover:-translate-y-3 hover:scale-[1.02] sm:hover:scale-[1.03] hover:border-orange-500/40 hover:bg-white/50 hover:shadow-[0_25px_60px_rgba(253,89,4,0.15)]"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="relative space-y-4 z-10">
+              <div className="relative space-y-3 sm:space-y-4 z-10">
                 {/* Subtle gradient background */}
                 <div className="absolute inset-0 -z-10 bg-gradient-subtle rounded-[var(--radius-lg)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                <span className="inline-flex w-max rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.3em] text-[var(--accent)] shadow-sm backdrop-blur-sm group-hover:border-[var(--orange-500)] group-hover:bg-white transition-all duration-300">
+                <span className="inline-flex w-max rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[9px] sm:text-xs font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[var(--accent)] shadow-sm backdrop-blur-sm group-hover:border-[var(--orange-500)] group-hover:bg-white transition-all duration-300">
                   KPI
                 </span>
-                <p className="text-3xl font-semibold bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] bg-clip-text text-transparent">{kpi.title}</p>
-                <p className="text-sm text-black/70">{kpi.description}</p>
+                <p className="text-2xl sm:text-3xl md:text-3xl font-semibold bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] bg-clip-text text-transparent">{kpi.title}</p>
+                <p className="text-xs sm:text-sm text-black/70">{kpi.description}</p>
               </div>
             </div>
           ))}
@@ -791,31 +805,31 @@ function MethodSection() {
 
 function OffersSection() {
   return (
-    <section id="offers" className="relative overflow-hidden px-4 py-24 md:px-6 section-premium scroll-mt-28 md:scroll-mt-32">
+    <section id="offers" className="relative overflow-hidden px-4 py-16 sm:py-20 md:py-24 md:px-6 section-premium scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32">
       {/* Section gradient divider */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-20 sm:h-32 md:h-40 bg-gradient-to-b from-white to-transparent" />
       
       {/* Accent circles */}
-      <div aria-hidden className="pointer-events-none absolute right-0 top-20 h-[400px] w-[400px] rounded-full bg-orange-500/5 blur-3xl animate-pulse-subtle" />
-      <div aria-hidden className="pointer-events-none absolute left-0 bottom-20 h-[350px] w-[350px] rounded-full bg-orange-500/5 blur-3xl animate-pulse-subtle" style={{ animationDelay: '1s' }} />
+      <div aria-hidden className="pointer-events-none absolute right-0 top-20 h-[250px] w-[250px] sm:h-[300px] sm:w-[300px] md:h-[400px] md:w-[400px] rounded-full bg-orange-500/5 blur-3xl animate-pulse-subtle" />
+      <div aria-hidden className="pointer-events-none absolute left-0 bottom-20 h-[200px] w-[200px] sm:h-[250px] sm:w-[250px] md:h-[350px] md:w-[350px] rounded-full bg-orange-500/5 blur-3xl animate-pulse-subtle" style={{ animationDelay: '1s' }} />
       
       <div className="relative mx-auto max-w-6xl">
-        <div className="flex flex-col gap-6 text-center mb-16">
-          <div className="mx-auto space-y-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-4 py-1.5 text-xs font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
-              <SparkleIcon className="h-3.5 w-3.5" />
+        <div className="flex flex-col gap-4 sm:gap-6 text-center mb-10 sm:mb-12 md:mb-16">
+          <div className="mx-auto space-y-3 sm:space-y-4 px-2 sm:px-0">
+            <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
+              <SparkleIcon className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
               <span>Offres YourStory</span>
             </span>
-            <h2 className="text-3xl font-semibold leading-tight tracking-tight text-gray-900 md:text-4xl lg:text-5xl max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight text-gray-900 max-w-4xl mx-auto">
               Des packs <span className="bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] bg-clip-text text-transparent">tout-en-un</span> pour votre contenu vidéo
             </h2>
-            <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Stratégie, production, montage et publication. Tout ce dont vous avez besoin pour booster votre présence en ligne.
             </p>
           </div>
         </div>
         
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
+        <div className="mt-8 sm:mt-10 md:mt-12 grid gap-6 sm:gap-8 md:grid-cols-2">
           {OFFERS.map((offer, index) => {
             const isPopular = index === 0; // Pack de 10 posts est populaire
             return (
@@ -843,11 +857,11 @@ function OffersSection() {
                   </div>
                 )}
                 
-                <div className={`space-y-8 relative z-10 ${isPopular ? 'px-8 py-12' : 'px-8 py-10'}`}>
+                <div className={`space-y-6 sm:space-y-8 relative z-10 ${isPopular ? 'px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12' : 'px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-10'}`}>
                   {/* Header */}
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
+                      <span className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
                         isPopular 
                           ? 'bg-orange-500/10 text-orange-700 border border-orange-500/30' 
                           : 'bg-white/80 text-gray-700 border border-gray-200'
@@ -857,17 +871,17 @@ function OffersSection() {
                     </div>
                     
                     <div>
-                      <div className="flex items-baseline gap-2">
-                        <p className={`text-5xl font-black tracking-tight ${
+                      <div className="flex items-baseline gap-1.5 sm:gap-2">
+                        <p className={`text-3xl sm:text-4xl md:text-5xl font-black tracking-tight ${
                           isPopular 
                             ? 'bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent' 
                             : 'text-gray-900'
                         }`}>
                           {offer.price.split(' ')[0]}
                         </p>
-                        <span className="text-xl font-semibold text-gray-500">CHF</span>
+                        <span className="text-lg sm:text-xl font-semibold text-gray-500">CHF</span>
                       </div>
-                      <p className="mt-2 text-sm text-gray-600 font-medium">{offer.description}</p>
+                      <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-gray-600 font-medium">{offer.description}</p>
                     </div>
                   </div>
                   
@@ -875,25 +889,25 @@ function OffersSection() {
                   <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
                   
                   {/* Inclusions */}
-                  <div className="space-y-4">
-                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">Ce qui est inclus :</h3>
-                    <ul className="space-y-3">
+                  <div className="space-y-3 sm:space-y-4">
+                    <h3 className="text-xs sm:text-sm font-bold text-gray-900 uppercase tracking-wide">Ce qui est inclus :</h3>
+                    <ul className="space-y-2.5 sm:space-y-3">
                       {offer.inclusions.map((item, idx) => (
                         <li 
                           key={item} 
-                          className="flex items-start gap-3 group-hover:translate-x-1 transition-transform duration-300"
+                          className="flex items-start gap-2.5 sm:gap-3 group-hover:translate-x-1 transition-transform duration-300"
                           style={{ transitionDelay: `${idx * 30}ms` }}
                         >
-                          <span className={`mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-md transition-all duration-300 ${
+                          <span className={`mt-0.5 inline-flex h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 items-center justify-center rounded-md transition-all duration-300 ${
                             isPopular 
                               ? 'bg-gradient-to-br from-orange-500 to-orange-600 shadow-md shadow-orange-500/30' 
                               : 'bg-gradient-to-br from-gray-400 to-gray-500 shadow-sm'
                           }`}>
-                            <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <svg className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                             </svg>
                           </span>
-                          <span className="text-sm text-gray-700 leading-relaxed font-medium">{item}</span>
+                          <span className="text-xs sm:text-sm text-gray-700 leading-relaxed font-medium">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -901,18 +915,18 @@ function OffersSection() {
                 </div>
                 
                 {/* CTA Button */}
-                <div className={`mt-auto ${isPopular ? 'px-8 pb-12' : 'px-8 pb-10'}`}>
-                  <CalendlyButton className={`w-full inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-bold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+                <div className={`mt-auto ${isPopular ? 'px-4 sm:px-6 md:px-8 pb-8 sm:pb-10 md:pb-12' : 'px-4 sm:px-6 md:px-8 pb-6 sm:pb-8 md:pb-10'}`}>
+                  <CalendlyButton className={`w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base font-bold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
                     isPopular 
                       ? 'bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-xl shadow-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/40 hover:scale-105 focus-visible:ring-orange-500' 
                       : 'bg-white text-gray-900 border-2 border-gray-200 shadow-lg hover:border-orange-500/50 hover:bg-orange-50 hover:scale-105 focus-visible:ring-gray-400'
                   }`}>
                     <span>Choisir ce pack</span>
-                    <ArrowRightIcon className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRightIcon className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </CalendlyButton>
                   
                   {isPopular && (
-                    <p className="mt-4 text-center text-xs text-gray-500">
+                    <p className="mt-3 sm:mt-4 text-center text-[10px] sm:text-xs text-gray-500">
                       🔥 Pack le plus populaire • Réponse sous 24h
                     </p>
                   )}
@@ -923,8 +937,8 @@ function OffersSection() {
         </div>
         
         {/* Trust section */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex flex-wrap items-center justify-center gap-8 rounded-2xl border-2 border-white/40 bg-white/40 px-8 py-6 shadow-xl backdrop-blur-xl">
+        <div className="mt-10 sm:mt-12 md:mt-16 text-center">
+          <div className="inline-flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 rounded-xl sm:rounded-2xl border-2 border-white/40 bg-white/40 px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 shadow-xl backdrop-blur-xl">
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-500/10 border border-green-500/30">
                 <svg className="h-6 w-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
@@ -969,61 +983,35 @@ function OffersSection() {
 
 function TestimonialsSection() {
   return (
-    <section id="testimonials-full" className="relative overflow-hidden px-4 py-24 md:px-6 section-premium scroll-mt-28 md:scroll-mt-32">
+    <section id="testimonials-full" className="relative overflow-hidden px-4 py-16 sm:py-20 md:py-24 md:px-6 section-premium scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32">
       {/* Section gradient background */}
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[var(--orange-alpha-5)] to-transparent" />
       
       {/* Accent circles */}
-      <div aria-hidden className="pointer-events-none absolute left-0 bottom-20 h-[350px] w-[350px] rounded-full bg-orange-500/5 blur-3xl animate-pulse-subtle" />
+      <div aria-hidden className="pointer-events-none absolute left-0 bottom-20 h-[200px] w-[200px] sm:h-[250px] sm:w-[250px] md:h-[350px] md:w-[350px] rounded-full bg-orange-500/5 blur-3xl animate-pulse-subtle" />
       
       <div className="relative mx-auto max-w-6xl">
-        <div className="space-y-4 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-4 py-1.5 text-xs font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
-            <SparkleIcon className="h-3.5 w-3.5" />
+        <div className="space-y-3 sm:space-y-4 text-center px-2 sm:px-0">
+          <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
+            <SparkleIcon className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
             <span>Avis & trust</span>
           </span>
-          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-gray-900 md:text-4xl lg:text-[2.75rem]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-semibold leading-tight tracking-tight text-gray-900">
             Nos clients en parlent <span className="bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] bg-clip-text text-transparent">mieux que nous</span>.
           </h2>
         </div>
         
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {TESTIMONIALS.map((testimonial, index) => (
-            <div
-              key={testimonial.name}
-              className="group relative rounded-[var(--radius-xl)] border-2 border-white/40 bg-white/35 px-6 py-8 shadow-2xl backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-orange-500/30 hover:bg-white/45 hover:shadow-[0_25px_60px_rgba(253,89,4,0.12)]"
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              {/* Quote icon */}
-              <div className="mb-4 flex justify-end">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[var(--orange-200)] to-[var(--orange-100)] text-[var(--orange-500)] opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9.58 17c-1.6 0-2.905-1.3-2.905-2.9 0-1.6 1.3-2.9 2.905-2.9.43 0 .845.1 1.225.27-.54-1.17-1.685-2-3.03-2.07v-2.2c2.905.14 5.18 2.47 5.18 5.36 0 2.47-2.01 4.44-4.5 4.44zm8.5 0c-1.6 0-2.905-1.3-2.905-2.9 0-1.6 1.305-2.9 2.905-2.9.435 0 .845.1 1.23.27-.54-1.17-1.69-2-3.035-2.07v-2.2c2.905.14 5.18 2.47 5.18 5.36 0 2.47-2.01 4.44-4.5 4.44z" />
-                  </svg>
-                </span>
-              </div>
-              
-              <p className="text-lg font-semibold leading-relaxed text-black">
-                &ldquo;{testimonial.quote}&rdquo;
-              </p>
-              
-              <div className="mt-6 flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[var(--orange-500)] to-[var(--orange-400)] text-white shadow-md shadow-orange-500/20">
-                  {testimonial.name.charAt(0)}
-                </span>
-                <p className="text-sm font-medium text-black/70">{testimonial.name}</p>
-              </div>
-            </div>
-          ))}
+        <div className="mt-10 sm:mt-12 md:mt-16">
+          <TestimonialsCarousel testimonials={TESTIMONIALS} />
         </div>
         
         {/* Trust badge */}
-        <div className="mt-16 flex justify-center">
-          <div className="inline-flex items-center justify-center gap-3 rounded-full border border-white/40 bg-white/70 px-8 py-4 text-sm font-medium text-gray-700 shadow-lg backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:shadow-xl">
+        <div className="mt-10 sm:mt-12 md:mt-16 flex justify-center">
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 rounded-full border border-white/40 bg-white/70 px-4 sm:px-6 md:px-8 py-3 sm:py-4 text-xs sm:text-sm font-medium text-gray-700 shadow-lg backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:shadow-xl">
             <span className="font-bold text-green-600">Excellent</span>
             <TrustPilotStars />
             <span className="font-semibold">Trustpilot</span>
-            <span className="text-xs text-gray-500 ml-2">4.9/5 (120+ avis)</span>
+            <span className="text-[10px] sm:text-xs text-gray-500 ml-1 sm:ml-2">4.9/5 (120+ avis)</span>
           </div>
         </div>
       </div>
@@ -1033,41 +1021,41 @@ function TestimonialsSection() {
 
 function FAQSection() {
   return (
-    <section id="faq" className="relative overflow-hidden px-4 py-24 md:px-6 section-premium scroll-mt-28 md:scroll-mt-32">
+    <section id="faq" className="relative overflow-hidden px-4 py-16 sm:py-20 md:py-24 md:px-6 section-premium scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32">
       {/* Section gradient divider */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-20 sm:h-32 md:h-40 bg-gradient-to-b from-white to-transparent" />
       
       {/* Accent circles */}
-      <div aria-hidden className="pointer-events-none absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-orange-500/5 blur-3xl animate-pulse-subtle" />
+      <div aria-hidden className="pointer-events-none absolute right-0 bottom-0 h-[250px] w-[250px] sm:h-[300px] sm:w-[300px] md:h-[400px] md:w-[400px] rounded-full bg-orange-500/5 blur-3xl animate-pulse-subtle" />
       
       <div className="relative mx-auto max-w-6xl">
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          <div className="max-w-md space-y-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-4 py-1.5 text-xs font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
-              <SparkleIcon className="h-3.5 w-3.5" />
+        <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-start md:justify-between">
+          <div className="max-w-md space-y-3 sm:space-y-4">
+            <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
+              <SparkleIcon className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
               <span>FAQ</span>
             </span>
-            <h2 className="text-3xl font-semibold leading-tight tracking-tight text-gray-900 md:text-4xl lg:text-[2.75rem]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-semibold leading-tight tracking-tight text-gray-900">
               Vos questions sur la <span className="bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] bg-clip-text text-transparent">production</span> et la <span className="bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] bg-clip-text text-transparent">performance</span>.
             </h2>
             
-            <p className="text-base text-gray-600 mt-4">
+            <p className="text-sm sm:text-base text-gray-600 mt-3 sm:mt-4">
               Nous sommes transparents sur notre processus et nos résultats. Voici les questions les plus fréquentes.
             </p>
           </div>
           
-          <div className="flex-1">
-            <div className="divide-y divide-gray-200/40 rounded-[var(--radius-xl)] border-2 border-white/40 bg-white/35 shadow-2xl backdrop-blur-2xl overflow-hidden">
+          <div className="flex-1 mt-6 md:mt-0">
+            <div className="divide-y divide-gray-200/40 rounded-[var(--radius-lg)] sm:rounded-[var(--radius-xl)] border-2 border-white/40 bg-white/35 shadow-2xl backdrop-blur-2xl overflow-hidden">
               {FAQ_ITEMS.map((item, idx) => (
                 <details key={item.question} className="group" open={idx === 0}>
-                  <summary className="flex w-full cursor-pointer items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold text-gray-900 transition-all duration-300 hover:bg-[var(--orange-alpha-5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 group-hover:text-[var(--accent)] list-none">
-                    <span className="transition-colors duration-300">{item.question}</span>
-                    <span aria-hidden="true" className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/40 bg-white/70 text-lg font-bold text-gray-900 shadow-md backdrop-blur-md transition-all duration-300 hover:scale-110 group-hover:border-[var(--orange-alpha-30)] group-hover:text-[var(--accent)]">
+                  <summary className="flex w-full cursor-pointer items-center justify-between gap-3 sm:gap-4 px-4 sm:px-5 md:px-6 py-4 sm:py-5 text-left text-sm sm:text-base font-semibold text-gray-900 transition-all duration-300 hover:bg-[var(--orange-alpha-5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 group-hover:text-[var(--accent)] list-none">
+                    <span className="transition-colors duration-300 pr-2">{item.question}</span>
+                    <span aria-hidden="true" className="inline-flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full border-2 border-white/40 bg-white/70 text-base sm:text-lg font-bold text-gray-900 shadow-md backdrop-blur-md transition-all duration-300 hover:scale-110 group-hover:border-[var(--orange-alpha-30)] group-hover:text-[var(--accent)] flex-shrink-0">
                       +
                     </span>
                   </summary>
-                  <div className="px-6 pb-6 text-sm leading-relaxed text-gray-700">
-                    <div className="p-4 rounded-[var(--radius-lg)] bg-white/60 border border-white/50 backdrop-blur-sm">
+                  <div className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6 text-xs sm:text-sm leading-relaxed text-gray-700">
+                    <div className="p-3 sm:p-4 rounded-[var(--radius-lg)] bg-white/60 border border-white/50 backdrop-blur-sm">
                       {item.answer}
                     </div>
                   </div>
@@ -1075,10 +1063,10 @@ function FAQSection() {
               ))}
             </div>
             
-            <div className="mt-8 text-center">
-              <CalendlyButton className="inline-flex items-center gap-2 text-sm font-medium text-[var(--accent)] hover:underline">
+            <div className="mt-6 sm:mt-8 text-center">
+              <CalendlyButton className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[var(--accent)] hover:underline">
                 <span>Une autre question ?</span>
-                <ArrowRightIcon className="h-5 w-5" />
+                <ArrowRightIcon className="h-4 w-4 sm:h-5 sm:w-5" />
               </CalendlyButton>
             </div>
           </div>
@@ -1090,65 +1078,65 @@ function FAQSection() {
 
 function ClientLoginSection() {
   return (
-    <section id="client-login" className="relative overflow-hidden px-4 py-16 md:px-6">
+    <section id="client-login" className="relative overflow-hidden px-4 py-12 sm:py-16 md:px-6">
       {/* Background gradient */}
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/30 to-transparent" />
       
       <div className="relative mx-auto max-w-4xl">
-        <div className="rounded-[var(--radius-xl)] border-2 border-white/50 bg-gradient-to-br from-white/70 via-white/60 to-white/50 p-8 md:p-12 shadow-2xl backdrop-blur-xl">
-          <div className="text-center space-y-6">
+        <div className="rounded-[var(--radius-lg)] sm:rounded-[var(--radius-xl)] border-2 border-white/50 bg-gradient-to-br from-white/70 via-white/60 to-white/50 p-6 sm:p-8 md:p-12 shadow-2xl backdrop-blur-xl">
+          <div className="text-center space-y-4 sm:space-y-6">
             {/* Icon */}
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30">
-              <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <div className="mx-auto flex h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30">
+              <svg className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </div>
             
             {/* Heading */}
-            <div className="space-y-3">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            <div className="space-y-2 sm:space-y-3">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
                 Déjà client ?
               </h2>
-              <p className="text-lg md:text-xl text-gray-700 font-medium">
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 font-medium">
                 Log toi à l&apos;espace client alors ! 🚀
               </p>
             </div>
             
             {/* Description */}
-            <p className="text-base text-gray-600 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-2 sm:px-0">
               Accède à ton tableau de bord personnalisé, suis l&apos;avancement de tes projets, télécharge tes vidéos et consulte tes statistiques de performance.
             </p>
             
             {/* CTA Button */}
-            <div className="pt-4">
+            <div className="pt-2 sm:pt-4">
               <a 
                 href="/login"
-                className="inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 px-8 py-4 text-base font-bold text-white shadow-xl shadow-orange-500/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+                className="inline-flex items-center gap-2 sm:gap-3 rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold text-white shadow-xl shadow-orange-500/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
               >
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                 </svg>
-                <span>Accéder à l&apos;espace client</span>
-                <ArrowRightIcon className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                <span className="whitespace-nowrap">Accéder à l&apos;espace client</span>
+                <ArrowRightIcon className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </div>
             
             {/* Additional info */}
-            <div className="pt-4 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
-              <div className="flex items-center gap-2">
-                <svg className="h-4 w-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <div className="pt-3 sm:pt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-500">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>Accès sécurisé</span>
               </div>
-              <div className="flex items-center gap-2">
-                <svg className="h-4 w-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                 </svg>
                 <span>Support 24/7</span>
               </div>
-              <div className="flex items-center gap-2">
-                <svg className="h-4 w-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                 </svg>
                 <span>Statistiques en temps réel</span>
@@ -1163,28 +1151,28 @@ function ClientLoginSection() {
 
 function FinalCTASection() {
   return (
-    <section id="final-cta" className="relative overflow-hidden px-4 py-24 md:px-6 section-premium">
+    <section id="final-cta" className="relative overflow-hidden px-4 py-16 sm:py-20 md:py-24 md:px-6 section-premium">
       {/* Final CTA gradient halo */}
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_var(--orange-alpha-15)_0%,_transparent_70%)] blur-3xl animate-pulse-subtle" />
-      <div className="relative mx-auto max-w-5xl px-4 text-center md:px-6">
-        <span className="inline-flex items-center gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-4 py-1.5 text-xs font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
-          <SparkleIcon className="h-3.5 w-3.5" />
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[400px] sm:h-[500px] sm:w-[500px] md:h-[600px] md:w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_var(--orange-alpha-15)_0%,_transparent_70%)] blur-3xl animate-pulse-subtle" />
+      <div className="relative mx-auto max-w-5xl px-2 sm:px-4 text-center md:px-6">
+        <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[var(--orange-alpha-30)] bg-white/80 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold text-[var(--accent)] shadow-sm backdrop-blur-md">
+          <SparkleIcon className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
           <span>Prêt à écrire la suite ?</span>
         </span>
-        <h2 className="mt-6 text-3xl font-semibold leading-tight tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
+        <h2 className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight text-gray-900">
           Vos histoires méritent un <span className="bg-gradient-to-r from-[var(--orange-600)] to-[var(--orange-500)] bg-clip-text text-transparent">format qui performe</span>.
         </h2>
-        <p className="mt-6 text-base leading-relaxed text-gray-700 md:text-lg max-w-3xl mx-auto">
+        <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-gray-700 max-w-3xl mx-auto px-2 sm:px-0">
           Réservons un appel découverte : nous répondons sous 24h avec un plan d&apos;action et des idées de narration sur-mesure.
         </p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-          <CalendlyButton className="inline-flex items-center gap-2 rounded-full bg-gradient-premium px-8 py-4 text-base font-semibold text-white shadow-xl shadow-[var(--shadow-accent)] transition-all duration-300 hover:scale-105 hover:bg-[var(--orange-600)] hover:shadow-2xl hover:shadow-[var(--shadow-accent-lg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2">
+        <div className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row sm:gap-6">
+          <CalendlyButton className="inline-flex items-center gap-2 rounded-full bg-gradient-premium px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-xl shadow-[var(--shadow-accent)] transition-all duration-300 hover:scale-105 hover:bg-[var(--orange-600)] hover:shadow-2xl hover:shadow-[var(--shadow-accent-lg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2">
             <span>Réserver un appel</span>
-            <ArrowRightIcon className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRightIcon className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:translate-x-1" />
           </CalendlyButton>
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/70 px-5 py-2.5 text-sm font-medium text-gray-700 shadow-sm backdrop-blur-md">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/70 px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-gray-700 shadow-sm backdrop-blur-md">
             <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
-            Réponse sous 24h • Sans engagement
+            <span className="whitespace-nowrap">Réponse sous 24h • Sans engagement</span>
           </span>
         </div>
       </div>
